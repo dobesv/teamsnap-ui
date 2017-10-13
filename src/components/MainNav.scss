@@ -1,0 +1,141 @@
+.MainNav {
+  display: flex;
+  flex-wrap: wrap;
+  height: 72px;
+  overflow: hidden;
+  position: relative;
+}
+
+.MainNav.is-active {
+  flex-wrap: nowrap;
+  overflow: visible;
+}
+
+.MainNav.is-active {
+  .MainNav-item {
+    flex: 1 1 100%;
+  }
+}
+
+.MainNav-item {
+  flex: 1 1 0%;
+  padding: 0;
+  list-style-type: none;
+
+  &:not(:last-child) {
+    border-right: solid 1px $cu-primary--dark;
+  }
+
+  &:first-child > .MainNav-link {
+    border-bottom-left-radius: 8px;
+  }
+
+  &:last-child > .MainNav-link {
+    border-bottom-right-radius: 8px;
+  }
+}
+
+.MainNav:not(.is-overflowing) {
+  .MainNav-item:nth-last-child(2) {
+    border-right: 0;
+
+    > .MainNav-link {
+     border-bottom-right-radius: 8px;
+   }
+  }
+}
+
+.MainNav-link {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: $cu-primary;
+  color: $ts-white;
+  padding: $su-medium 12px;;
+  text-align: center;
+  transition: all ease 300ms;
+
+  &:hover, &:focus {
+    background-color: $cu-primary--dark;
+    color: $ts-white;
+  }
+
+  @media(min-width: $breakpoint-sm) {
+    padding: $su-medium;
+  }
+}
+
+.MainNav-icon {
+  width: 1.5rem;
+  height: 1.5rem;
+  margin-bottom: $su-xsmall;
+}
+
+.MainNav-label {
+  margin-bottom: 0;
+  font-size: scaleFont($fontSize, -1);
+  white-space: nowrap;
+}
+
+
+// Overflow Menu
+
+.MainNav-overflow {
+  display: none;
+}
+
+.MainNav.is-overflowing {
+  .MainNav-overflow {
+    display: block
+  }
+}
+
+
+$MainNav-caret-size: 12px;
+
+.MainNav-overflow::after {
+  content: "";
+  display: none;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 0 $MainNav-caret-size $MainNav-caret-size $MainNav-caret-size;
+  border-color: transparent transparent $cu-primary transparent;
+  margin-left: 50%;
+  transform: translateX(-50%);
+}
+
+.MainNav.is-open .MainNav-overflow::after {
+  display: block;
+}
+
+.MainNav-overflowMenu {
+  display: none;
+  position: absolute;
+  border-radius: $su-small;
+  right: 0;
+  top: 100%;
+  margin-top: 12px;
+  z-index: 1;
+  background: $cu-primary;
+  padding: $su-medium;
+  max-width: 350px;
+}
+
+.MainNav.is-open {
+  .MainNav-overflowMenu {
+    display: flex;
+    flex-wrap: wrap;
+  }
+}
+
+.MainNav-item--overflow {
+  border-right: 0 !important;
+  flex: 1 1 33.3333% !important;
+}
+
+.MainNav-link--overflow {
+  border-radius: $su-small;
+}
