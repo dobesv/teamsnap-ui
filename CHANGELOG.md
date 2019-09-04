@@ -21,7 +21,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 - `Added` CSS & HTML for modals
 - `Security` Refactored theme variables for direct import
-- `Added` Utilities more for colors and borders 
+- `Added` Utilities more for colors and borders
 
 ## [3.0.0] - 2019-09-04
 
