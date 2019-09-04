@@ -12,6 +12,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - `Fixed` for any bug fixes.
 - `Security`
 
+## [3.0.1] - 2019-09-04
+
+- `Added` exporting all types through index.d.ts for better package-level support.
+
 ## [3.0.0] - 2019-09-04
 
 - `Added` support for TypeScript
