@@ -31,21 +31,17 @@ const directionOptions = [
   "overlay"
 ];
 stories.add("PopupActions", () => {
-  const dir = select("direction", directionOptions);
-  const direction = dir === "default" ? null : dir;
   return (
     <PopupAction
       text="..."
       actions={actions}
-      direction={direction}
+      direction={["left", "down"]}
       popupStyle={{ width: "150px" }}
     />
   );
 });
 
 stories.add("PopupConfirm", () => {
-  const dir = select("direction", directionOptions);
-  const direction = dir === "default" ? null : dir;
   const popupText = (
     <h4>Do you really want to hurt me? Do you really want to make me cry?</h4>
   );
@@ -61,7 +57,6 @@ stories.add("PopupConfirm", () => {
       onCancel={onCancel}
       buttonText="Perform the Culture Club!"
       popUpText={popupText}
-      direction={direction}
     />
   );
 });

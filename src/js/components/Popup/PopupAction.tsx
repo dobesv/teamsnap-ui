@@ -13,7 +13,13 @@ interface Props {
   text: string | React.ReactElement;
   actions: Array<Action>;
   popupStyle?: React.CSSProperties;
-  direction?: "down" | "right" | "left" | "rightHang" | "leftHang" | "overlay";
+  direction?: (
+    | "down"
+    | "right"
+    | "left"
+    | "rightHang"
+    | "leftHang"
+    | "overlay")[];
 }
 
 export default class PopUpAction extends React.Component<Props, State> {
@@ -46,6 +52,9 @@ export default class PopUpAction extends React.Component<Props, State> {
   }
 
   render() {
+    const dirString = this.props.direction.reduce((acc, cur) => {
+      return acc + ` Popup-container--${cur}`;
+    }, "");
     return (
       <div className="Popup Popup--hover">
         <button
@@ -57,9 +66,7 @@ export default class PopUpAction extends React.Component<Props, State> {
         <div
           className={
             "Popup-container " +
-            (this.props.direction
-              ? ` Popup-container--${this.props.direction}`
-              : "") +
+            dirString +
             (this.state.isPopupOpen ? " is-open" : "")
           }
           style={this.props.popupStyle}
